@@ -62,5 +62,10 @@ C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Micr
 C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Debug\netcoreapp3.1\BGRent.Server.csproj.CoreCompileInputs.cache
+C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Debug\netcoreapp3.1\BGRent.Server.MvcApplicationPartsAssemblyInfo.cs
 C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Debug\netcoreapp3.1\BGRent.Server.MvcApplicationPartsAssemblyInfo.cache

@@ -21,12 +21,11 @@ namespace BGRent.Server
         {
 
             services
-                .AddDbContext<BGRentDbContext>(options => options
-                    .UseSqlServer(
-                        this.Configuration.GetDefaultConnectionString()))
+                .AddDatabase(this.Configuration)
                 .AddIdentity()
                 .AddJWTAuthentication(this.Configuration.GetApplicationSettings(services))
                 .AddAppServices()
+                .AddSwagger()
                 .AddControllers();
         }
 
@@ -38,7 +37,9 @@ namespace BGRent.Server
                 app.UseDatabaseErrorPage();
             }
 
-            app.UseRouting()
+            app
+                .UseSwaggerUI()
+                .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>

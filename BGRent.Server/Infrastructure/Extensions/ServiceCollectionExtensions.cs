@@ -1,18 +1,29 @@
-﻿using System.Text;
-using BGRent.Server.Features.BoardGames;
-using BGRent.Server.Features.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+﻿using System.Linq;
+using Microsoft.OpenApi.Models;
 
 namespace BGRent.Server.Infrastructure.Extensions
 {
     using Data;
     using Data.Models;
+    using Features.BoardGames;
+    using Features.Identity;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.IdentityModel.Tokens;
+    using System.Text;
+    using Swashbuckle.AspNetCore.Swagger;
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+            => services
+                .AddDbContext<BGRentDbContext>(options => options
+                    .UseSqlServer(
+                        configuration.GetDefaultConnectionString()));
+
+
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
             services.AddIdentity<User, IdentityRole>(options =>
@@ -61,5 +72,17 @@ namespace BGRent.Server.Infrastructure.Extensions
 
             return services;
         }
+
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+            => services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Title = "My BGRent API",
+                        Version = "v1"
+                    });
+            });
     }
 }
