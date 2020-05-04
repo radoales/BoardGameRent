@@ -16,7 +16,8 @@
 
         public IdentityController(
             UserManager<User> userManager,
-            IOptions<AppSettings> appSettings, IIdentityService identityService)
+            IOptions<AppSettings> appSettings,
+            IIdentityService identityService)
         {
             this.userManager = userManager;
             this.identityService = identityService;
@@ -65,6 +66,7 @@
             var token = this.identityService.GenerateJwtToken(
                 user.Id,
                 user.UserName,
+                user.Role,
                 this.appSettings.Secret);
 
             return new LoginResponseModel

@@ -1,5 +1,6 @@
 ﻿namespace BGRent.Server.Features.BoardGames
 {
+    using BGRent.Server.Infrastructure.Extensions;
     using Features;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@
             => this.boardGameService = boardGameService;
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateBoardGameRequestModel model)
+        public async Task<ActionResult> Create(BoardGameCreateRequestModel model)
         {
             var userId = this.User.GetUserId();
 
@@ -30,6 +31,7 @@
                   model.MaxPlayingTime,
                   model.AgeRating,
                   model.Weight,
+                  model.IsAvailable,
                   model.CategoryId,
                   userId);
 
@@ -58,6 +60,35 @@
             }
 
             return boardGame;
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(BoardGameUpdateRequestModel model)
+        {
+            var userId = this.User.GetUserId();
+
+            var isUpdated = await this.boardGameService.Update(
+                model.Id,
+                model.Name,
+                model.Description,
+                model.MinPlayers,
+                model.MaxPlayers,
+                model.MinPlayingTime,
+                model.MaxPlayingTime,
+                model.AgeRating,
+                model.Weight,
+                model.IsAvailable,
+                model.CategoryId,
+                userId
+                );
+
+            if (!isUpdated)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+
         }
 
     }

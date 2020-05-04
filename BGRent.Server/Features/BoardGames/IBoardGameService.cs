@@ -8,10 +8,15 @@
     {
         public Task<int> Create(string name, string description, int minPlayers,
             int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,
-            double weight, int categoryId, string userId);
+            double weight, bool isAvailable, int categoryId, string userId);
 
         public Task<IEnumerable<BoardGameListingResponseModel>> ByUser(string userId);
 
         public Task<BoardGameDetailsResponseModel> Details(int id);
+
+        public Task<bool> Update(int id, string name, string description, int minPlayers,
+            int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,
+            double weight, bool isAvailable, int categoryId, string userId);
+
     }
 }

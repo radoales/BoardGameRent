@@ -2,9 +2,11 @@
 {
     using BGRent.Server.Data.Models;
     using System.ComponentModel.DataAnnotations;
-    using static Data.Validation.BoardGame;
-    public class CreateBoardGameRequestModel
+    using static BGRent.Server.Data.Validation.BoardGame;
+    public class BoardGameUpdateRequestModel
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -27,11 +29,12 @@
         [Required]
         public AgeRating AgeRating { get; set; }
 
+        public bool IsAvailable { get; set; }
+
         [Required]
         public double Weight { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
-
     }
 }

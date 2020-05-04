@@ -18,7 +18,7 @@
         }
 
         public async Task<int> Create(string name, string description, int minPlayers, int maxPlayers,
-            int minPlayingTime, int maxPlayingTime, AgeRating ageRating, double weight, int categoryId, string userId)
+            int minPlayingTime, int maxPlayingTime, AgeRating ageRating, double weight, bool isAvailable, int categoryId, string userId)
         {
             var boardGame = new BoardGame
             {
@@ -31,7 +31,8 @@
                 AgeRating = ageRating,
                 UserId = userId,
                 CategoryId = categoryId,
-                Weight = weight
+                Weight = weight,
+                IsAvailable = isAvailable
             };
 
             db.Add(boardGame);
@@ -69,6 +70,39 @@
                 Weight = bg.Weight
             })
             .FirstOrDefaultAsync();
-                
+
+        public async Task<bool> Update(int id, string name, string description, int minPlayers, 
+            int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,
+            double weight, bool isAvailable, int categoryId, string userId)
+        {
+            var boardGame = await this.GetByIdAndByUserId(id, userId);
+
+            if (boardGame == null)
+            {
+                return false;
+            }
+
+            boardGame.Name = name;
+            boardGame.Description = description;
+            boardGame.MinPlayers = minPlayers;
+            boardGame.MaxPlayers = maxPlayers;
+            boardGame.MinPlayingTime = minPlayingTime;
+            boardGame.MaxPlayingTime = maxPlayingTime;
+            boardGame.AgeRating = ageRating;
+            boardGame.IsAvailable = isAvailable;
+            boardGame.Weight = weight;
+            boardGame.CategoryId = categoryId;
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+            
+        }
+
+        private async Task<BoardGame> GetByIdAndByUserId(int id, string userId)
+            => await this.db
+                .BoardGames
+                .Where(bg => bg.Id == id && bg.UserId == userId)
+                .FirstOrDefaultAsync();
     }
 }
