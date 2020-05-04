@@ -1,5 +1,6 @@
 ﻿namespace BGRent.Server.Infrastructure.Extensions
 {
+    using BGRent.Server.Infrastructure.Extensions.Filters;
     using Data;
     using Data.Models;
     using Features.BoardGames;
