@@ -1,6 +1,7 @@
 ﻿namespace BGRent.Server.Features.BoardGames
 {
     using BGRent.Server.Data.Models;
+    using BGRent.Server.Features.BoardGames.Models;
     using Data;
     using Microsoft.EntityFrameworkCore;
     using Models;
@@ -49,5 +50,25 @@
                     Name = bg.Name
                 })
                 .ToListAsync();
+
+        public async Task<BoardGameDetailsResponseModel> Details(int id)
+         => await this.db
+            .BoardGames
+            .Where(bg => bg.Id == id)
+            .Select(bg => new BoardGameDetailsResponseModel
+            {
+                UserId = bg.UserId,
+                Name = bg.Name,
+                Description = bg.Description,
+                MinPlayers = bg.MinPlayers,
+                MaxPlayers = bg.MaxPlayers,
+                MinPlayingTime = bg.MinPlayingTime,
+                MaxPlayingTime = bg.MaxPlayingTime,
+                AgeRating = bg.AgeRating,
+                CategoryId = bg.CategoryId,
+                Weight = bg.Weight
+            })
+            .FirstOrDefaultAsync();
+                
     }
 }

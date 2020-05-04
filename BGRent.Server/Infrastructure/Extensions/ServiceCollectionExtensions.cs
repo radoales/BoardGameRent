@@ -81,5 +81,8 @@
                         Version = "v1"
                     });
             });
+
+        public static void AddApiControllers(this IServiceCollection services)
+        => services.AddControllers(options => options.Filters.Add<ModelOrNotFoundActionFilter>());
     }
 }

@@ -22,7 +22,7 @@ namespace BGRent.Server
                 .AddJWTAuthentication(this.Configuration.GetApplicationSettings(services))
                 .AddAppServices()
                 .AddSwagger()
-                .AddControllers();
+                .AddApiControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

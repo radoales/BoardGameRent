@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using static Infrastructure.Extensions.IdentityExtensions;
 
+    [Authorize]
     public class BoardGamesController : ApiController
     {
         private readonly IBoardGameService boardGameService;
@@ -15,9 +16,7 @@
         public BoardGamesController(IBoardGameService boardGameService)
             => this.boardGameService = boardGameService;
 
-        [Authorize]
         [HttpPost]
-        [Route(nameof(Create))]
         public async Task<ActionResult> Create(CreateBoardGameRequestModel model)
         {
             var userId = this.User.GetUserId();
@@ -37,9 +36,7 @@
             return Created(nameof(Create), id);
         }
 
-        [Authorize]
         [HttpGet]
-        [Route(nameof(Mine))]
         public async Task<IEnumerable<BoardGameListingResponseModel>> Mine()
         {
             var userId = this.User.GetUserId();
@@ -47,6 +44,20 @@
             var boardGames = await this.boardGameService.ByUser(userId);
 
             return boardGames;
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<BoardGameDetailsResponseModel>> Details(int id)
+        {
+            var boardGame = await this.boardGameService.Details(id);
+
+            if (boardGame == null)
+            {
+                return NotFound();
+            }
+
+            return boardGame;
         }
 
     }
