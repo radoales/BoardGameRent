@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using Microsoft.OpenApi.Models;
-
-namespace BGRent.Server.Infrastructure.Extensions
+﻿namespace BGRent.Server.Infrastructure.Extensions
 {
     using Data;
     using Data.Models;
@@ -13,8 +10,8 @@ namespace BGRent.Server.Infrastructure.Extensions
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
+    using Microsoft.OpenApi.Models;
     using System.Text;
-    using Swashbuckle.AspNetCore.Swagger;
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)

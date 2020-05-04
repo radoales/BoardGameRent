@@ -37,6 +37,9 @@ namespace BGRent.Server.Data.Migrations
                         .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
                     b.Property<int>("MaxPlayers")
                         .HasColumnType("int");
 

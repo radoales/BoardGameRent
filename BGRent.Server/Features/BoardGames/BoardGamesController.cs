@@ -4,10 +4,10 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using static Infrastructure.Extensions.IdentityExtensions;
 
-    [Authorize]
     public class BoardGamesController : ApiController
     {
         private readonly IBoardGameService boardGameService;
@@ -15,6 +15,7 @@
         public BoardGamesController(IBoardGameService boardGameService)
             => this.boardGameService = boardGameService;
 
+        [Authorize]
         [HttpPost]
         [Route(nameof(Create))]
         public async Task<ActionResult> Create(CreateBoardGameRequestModel model)
@@ -36,6 +37,17 @@
             return Created(nameof(Create), id);
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route(nameof(Mine))]
+        public async Task<IEnumerable<BoardGameListingResponseModel>> Mine()
+        {
+            var userId = this.User.GetUserId();
+
+            var boardGames = await this.boardGameService.ByUser(userId);
+
+            return boardGames;
+        }
 
     }
 }

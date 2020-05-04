@@ -41,6 +41,8 @@
         [Required]
         public double Weight { get; set; }
 
+        public bool IsAvailable { get; set; }
+
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }

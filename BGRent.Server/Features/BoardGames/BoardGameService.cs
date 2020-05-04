@@ -1,8 +1,11 @@
-﻿using BGRent.Server.Data;
-using BGRent.Server.Data.Models;
-
-namespace BGRent.Server.Features.BoardGames
+﻿namespace BGRent.Server.Features.BoardGames
 {
+    using BGRent.Server.Data.Models;
+    using Data;
+    using Microsoft.EntityFrameworkCore;
+    using Models;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     public class BoardGameService : IBoardGameService
     {
@@ -35,5 +38,16 @@ namespace BGRent.Server.Features.BoardGames
 
             return boardGame.Id;
         }
+
+        public async Task<IEnumerable<BoardGameListingResponseModel>> ByUser(string userId)
+            => await this.db
+                .BoardGames
+                .Where(bg => bg.UserId == userId)
+                .Select(bg => new BoardGameListingResponseModel
+                {
+                    Id = bg.Id,
+                    Name = bg.Name
+                })
+                .ToListAsync();
     }
 }

@@ -64,3 +64,17 @@ C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Release\netcoreapp3.1\st
 C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Release\netcoreapp3.1\BGRent.Server.dll
 C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Release\netcoreapp3.1\BGRent.Server.pdb
 C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Release\netcoreapp3.1\BGRent.Server.genruntimeconfig.cache
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\obj\Release\netcoreapp3.1\BGRent.Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.AzureKeyVault.HostingStartup.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Azure.KeyVault.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Azure.KeyVault.WebKey.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Extensions.Configuration.AzureKeyVault.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\Programming\Projects\BGRent.Server\BGRent.Server\bin\Release\netcoreapp3.1\Microsoft.Rest.ClientRuntime.Azure.dll
