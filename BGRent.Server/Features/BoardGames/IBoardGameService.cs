@@ -18,5 +18,7 @@
             int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,
             double weight, bool isAvailable, int categoryId, string userId);
 
+        public Task<bool> Delete(int id, string userId);
+
     }
 }

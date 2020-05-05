@@ -4,7 +4,6 @@
     using BGRent.Server.Features.BoardGames.Models;
     using Data;
     using Microsoft.EntityFrameworkCore;
-    using Models;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -71,7 +70,7 @@
             })
             .FirstOrDefaultAsync();
 
-        public async Task<bool> Update(int id, string name, string description, int minPlayers, 
+        public async Task<bool> Update(int id, string name, string description, int minPlayers,
             int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,
             double weight, bool isAvailable, int categoryId, string userId)
         {
@@ -96,7 +95,7 @@
             await this.db.SaveChangesAsync();
 
             return true;
-            
+
         }
 
         private async Task<BoardGame> GetByIdAndByUserId(int id, string userId)
@@ -104,5 +103,21 @@
                 .BoardGames
                 .Where(bg => bg.Id == id && bg.UserId == userId)
                 .FirstOrDefaultAsync();
+
+        public async Task<bool> Delete(int id, string userId)
+        {
+            var boardGame = await this.GetByIdAndByUserId(id, userId);
+
+            if (boardGame == null)
+            {
+                return false;
+            }
+
+            this.db.Remove(boardGame);
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

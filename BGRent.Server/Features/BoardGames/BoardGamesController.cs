@@ -8,6 +8,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using static Infrastructure.Extensions.IdentityExtensions;
+    using static Infrastructure.WebConstants;
 
     [Authorize]
     public class BoardGamesController : ApiController
@@ -49,7 +50,7 @@
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route(Id)]
         public async Task<ActionResult<BoardGameDetailsResponseModel>> Details(int id)
         {
             var boardGame = await this.boardGameService.Details(id);
@@ -91,5 +92,20 @@
 
         }
 
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userId = this.User.GetUserId();
+
+            var isDeleted = await this.boardGameService.Delete(id, userId);
+
+            if (!isDeleted)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
     }
 }
