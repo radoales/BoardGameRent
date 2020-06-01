@@ -4,7 +4,7 @@
     using BGRent.Server.Features.BoardGames.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    public interface IBoardGameService
+    public interface IBoardGamesService
     {
         public Task<int> Create(string name, string description, int minPlayers,
             int maxPlayers, int minPlayingTime, int maxPlayingTime, AgeRating ageRating,

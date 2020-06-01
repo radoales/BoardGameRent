@@ -65,7 +65,7 @@
         public static IServiceCollection AddAppServices(this IServiceCollection services)
         {
             services
-                .AddTransient<IBoardGameService, BoardGameService>()
+                .AddTransient<IBoardGamesService, BoardGamesService>()
                 .AddTransient<IIdentityService, IdentityService>();
 
             return services;

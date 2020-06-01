@@ -55,9 +55,9 @@
                 return Unauthorized();
             }
 
-            var passwordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
+            var isPasswordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
 
-            if (!passwordValid)
+            if (!isPasswordValid)
             {
                 return Unauthorized();
             }
@@ -74,5 +74,6 @@
                 Token = token
             };
         }
+        
     }
 }

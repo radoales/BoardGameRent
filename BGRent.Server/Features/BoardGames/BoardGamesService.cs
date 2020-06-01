@@ -7,11 +7,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    public class BoardGameService : IBoardGameService
+    public class BoardGamesService : IBoardGamesService
     {
         private readonly BGRentDbContext db;
 
-        public BoardGameService(BGRentDbContext db)
+        public BoardGamesService(BGRentDbContext db)
         {
             this.db = db;
         }

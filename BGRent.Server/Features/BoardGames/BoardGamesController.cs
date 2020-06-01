@@ -2,7 +2,6 @@
 {
     using BGRent.Server.Infrastructure.Extensions;
     using Features;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using System.Collections.Generic;
@@ -10,12 +9,12 @@
     using static Infrastructure.Extensions.IdentityExtensions;
     using static Infrastructure.WebConstants;
 
-    [Authorize]
+    //[Authorize]
     public class BoardGamesController : ApiController
     {
-        private readonly IBoardGameService boardGameService;
+        private readonly IBoardGamesService boardGameService;
 
-        public BoardGamesController(IBoardGameService boardGameService)
+        public BoardGamesController(IBoardGamesService boardGameService)
             => this.boardGameService = boardGameService;
 
         [HttpPost]
